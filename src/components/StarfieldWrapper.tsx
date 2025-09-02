@@ -8,8 +8,8 @@ export default function StarfieldWrapper() {
       left: 0,
       width: '100vw',
       height: '100vh',
-      zIndex: -10,
-      background: 'linear-gradient(to bottom, #000011, #000033, #000066)'
+      zIndex: -1,
+      background: 'transparent'
     }}>
       {/* Basit yıldızlar */}
       <div style={{

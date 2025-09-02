@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ThemeToggle from "@/components/ThemeToggle";
+import SkillCloud from "@/components/SkillCloud";
 
 export default function Home() {
   return (
@@ -12,6 +13,11 @@ export default function Home() {
       
       {/* Hero Section */}
       <Hero />
+
+      {/* Skill Cloud */}
+      <div className="py-16">
+        <SkillCloud />
+      </div>
       
       {/* About Section */}
       <About />
