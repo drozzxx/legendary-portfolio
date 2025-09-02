@@ -1,0 +1,18 @@
+{
+  "tr": {
+    "title": "Hakkımda",
+    "bio": "Merhaba! Ben Muhammed Zahid, tutkulu bir frontend geliştiricisi ve yaratıcı kod yazarıyım. Modern web teknolojileri konusunda uzmanlaşmış, kullanıcı deneyimini ön planda tutan projeler geliştiriyorum. React, Next.js, TypeScript ve modern CSS framework'leri ile çalışmayı seviyorum. Her projede hem teknik mükemmellik hem de estetik değer yaratmaya odaklanıyorum.",
+    "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Node.js"],
+    "experience": "3+ yıl",
+    "projects": "50+",
+    "languages": "Türkçe, İngilizce"
+  },
+  "en": {
+    "title": "About Me",
+    "bio": "Hello! I'm Muhammed Zahid, a passionate frontend developer and creative coder. I specialize in modern web technologies, creating projects that prioritize user experience. I love working with React, Next.js, TypeScript, and modern CSS frameworks. In every project, I focus on creating both technical excellence and aesthetic value.",
+    "skills": ["React", "Next.js", "TypeScript", "Tailwind CSS", "Three.js", "Node.js"],
+    "experience": "3+ years",
+    "projects": "50+",
+    "languages": "Turkish, English"
+  }
+} 
