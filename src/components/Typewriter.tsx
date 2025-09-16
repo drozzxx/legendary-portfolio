@@ -21,7 +21,11 @@ export default function Typewriter({
   const [displayText, setDisplayText] = useState('')
 
   useEffect(() => {
+    // Güvenli string kontrolü
+    if (!strings || strings.length === 0) return
+    
     const currentString = strings[currentStringIndex]
+    if (!currentString) return
     
     if (!isDeleting) {
       // Typing

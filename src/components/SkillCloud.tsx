@@ -1,8 +1,9 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useEffect, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Code2, Sparkles, Figma, Cpu, BadgeCheck } from 'lucide-react'
+import { safeTouchCheck, protectFromExtensions } from '../utils/browserUtils'
 
 type Tag = {
   label: string
@@ -31,7 +32,12 @@ function CloudTag({ t }: { t: Tag }) {
       style={{ transform: `translate(-50%,-50%) rotate(${theta}deg) translateX(${RADIUS}px)` }}
     >
       {/* Hover animasyonu İÇ sarmalda: dış sarmalın transform'u sabit kalsın */}
-      <motion.div whileHover={{ scale: 1.08 }} style={{ transform: `rotate(${-theta}deg)` }}>
+      <motion.div 
+        whileHover={{ scale: 1.08 }} 
+        style={{ transform: `rotate(${-theta}deg)` }}
+        initial={false}
+        animate={false}
+      >
         <div className="px-3 py-1 rounded-full text-xs font-medium border border-white/30 text-white/90 backdrop-blur select-none">
           <span className="inline-flex items-center gap-1">
             {t.icon}
@@ -58,6 +64,9 @@ function CloudTag({ t }: { t: Tag }) {
 }
 
 export default function SkillCloud() {
+  const [isClient, setIsClient] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  
   const tags = useMemo<Tag[]>(() => {
     const n = RAW.length
     return RAW.map((s, i) => ({
@@ -67,8 +76,39 @@ export default function SkillCloud() {
     }))
   }, [])
 
+  useEffect(() => {
+    // Eklenti hatalarını koruma
+    protectFromExtensions()
+    
+    // Güvenli client-side kontrolü
+    if (typeof window !== 'undefined') {
+      setIsClient(true)
+    }
+  }, [])
+
+  // Touch event kontrolü için güvenli fonksiyon
+  const touchDevice = useMemo(() => {
+    return safeTouchCheck()
+  }, [])
+
+  if (!isClient) {
+    return (
+      <div className="relative w-full h-[360px]">
+        <div className="absolute inset-0 origin-center will-change-transform animate-[spin_30s_linear_infinite]">
+          {tags.map((t) => (
+            <CloudTag key={t.label} t={t} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="relative w-full h-[360px]">
+    <div 
+      ref={containerRef}
+      className="relative w-full h-[360px]"
+      data-touch-device={touchDevice}
+    >
       {/* Sadece parent dönüyor, çocukların konumu sabit kalıyor */}
       <div className="absolute inset-0 origin-center will-change-transform animate-[spin_30s_linear_infinite]">
         {tags.map((t) => (

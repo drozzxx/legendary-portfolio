@@ -1,8 +1,11 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import Typewriter from './Typewriter'
+import { createProtectedMutationObserver, protectFromExtensions } from '../utils/browserUtils'
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null)
   const typewriterStrings = [
     "Frontend Developer",
     "UI/UX Designer",
@@ -10,8 +13,56 @@ export default function Hero() {
     "Problem Solver"
   ]
 
+  // Güvenli DOM erişimi için useEffect
+  useEffect(() => {
+    // Eklenti hatalarını koruma
+    protectFromExtensions()
+
+    if (typeof window !== 'undefined' && heroRef.current) {
+      // Güvenli MutationObserver oluşturma
+      const observer = createProtectedMutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'childList') {
+            // Güvenli şekilde child node'ları kontrol et
+            mutation.addedNodes.forEach((node) => {
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                const element = node as Element
+                if (element.className) {
+                  // className güvenli şekilde erişilebilir
+                  console.log('New element added:', element.className)
+                }
+              }
+            })
+          }
+        })
+      })
+
+      // Güvenli observe
+      if (observer && heroRef.current) {
+        try {
+          observer.observe(heroRef.current, {
+            childList: true,
+            subtree: true
+          })
+        } catch (error) {
+          console.warn('Observer setup error:', error)
+        }
+      }
+
+      return () => {
+        if (observer) {
+          try {
+            observer.disconnect()
+          } catch (error) {
+            console.warn('Observer disconnect error:', error)
+          }
+        }
+      }
+    }
+  }, [])
+
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section ref={heroRef} className="relative min-h-screen w-full overflow-hidden">
       {/* Yıldız Arka Planı */}
       <div style={{
         position: 'fixed',

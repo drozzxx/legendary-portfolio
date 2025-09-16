@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import StarfieldWrapper from "@/components/StarfieldWrapper";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,42 @@ export default function RootLayout({
                   if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                     document.documentElement.classList.add('dark');
                   } else {
-                    document.documentElement.remove('dark');
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
+              })();
+            `,
+          }}
+        />
+        <Script
+          id="extension-protection"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Eklenti hatalarını filtrele
+                var originalError = window.onerror;
+                window.onerror = function(message, source, lineno, colno, error) {
+                  if (source && (source.includes('chrome-extension://') || 
+                      source.includes('moz-extension://') || 
+                      source.includes('content_script.js') || 
+                      source.includes('vendor.js'))) {
+                    return true; // Eklenti hatalarını sessizce geç
+                  }
+                  if (originalError) {
+                    return originalError.call(this, message, source, lineno, colno, error);
+                  }
+                  return false;
+                };
+                
+                // Unhandled promise rejection'ları filtrele
+                window.addEventListener('unhandledrejection', function(event) {
+                  if (event.reason && event.reason.stack && 
+                      (event.reason.stack.includes('chrome-extension://') || 
+                       event.reason.stack.includes('content_script.js'))) {
+                    event.preventDefault();
+                  }
+                });
               })();
             `,
           }}

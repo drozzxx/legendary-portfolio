@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Tailwind CSS değişkenlerini override et */
+  --color-black: transparent !important; /* Siyah rengi şeffaf yap */
 }
 
 body {

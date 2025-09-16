@@ -30,12 +30,20 @@ export default function About() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/data/about.json')
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
+        // Güvenli fetch işlemi
+        if (typeof window !== 'undefined') {
+          const response = await fetch('/data/about.json')
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+          }
+          const aboutData = await response.json()
+          // Güvenli data kontrolü
+          if (aboutData && aboutData.tr && aboutData.en) {
+            setData(aboutData)
+          } else {
+            throw new Error('Invalid data structure')
+          }
         }
-        const aboutData = await response.json()
-        setData(aboutData)
       } catch (error) {
         console.error('Error fetching about data:', error)
         // Fallback data
