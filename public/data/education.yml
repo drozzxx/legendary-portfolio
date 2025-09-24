@@ -1,0 +1,35 @@
+# Education timeline data
+# Edit this file to update the education timeline
+
+- institution: Istanbul Technical University
+  degree: Bachelor of Science in Computer Engineering
+  period: 2018 - 2022
+  location: Istanbul, Turkey
+  logo: /data/logos/itu.png
+  description: Focused on software engineering, algorithms, and web development. Graduated with honors.
+  achievements:
+    - Dean's List for 3 consecutive semesters
+    - Final year project: "Real-time Web Application with React and Node.js"
+    - GPA: 3.8/4.0
+
+- institution: FreeCodeCamp
+  degree: Full Stack Web Development Certification
+  period: 2020 - 2021
+  location: Online
+  logo: /data/logos/freecodecamp.png
+  description: Comprehensive full-stack development program covering modern web technologies.
+  achievements:
+    - 300+ hours of coding challenges
+    - 6 certification projects completed
+    - JavaScript Algorithms and Data Structures
+
+- institution: Google Developer Student Clubs
+  degree: Mobile App Development Workshop
+  period: 2019
+  location: Istanbul, Turkey
+  logo: /data/logos/google.png
+  description: Intensive workshop on mobile app development using Flutter and Firebase.
+  achievements:
+    - Built and published 2 mobile applications
+    - Learned Firebase integration and cloud services
+    - Collaborated with 50+ developers
