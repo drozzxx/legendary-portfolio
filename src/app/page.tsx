@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import ThemeToggle from "@/components/ThemeToggle";
 import SkillCloud from "@/components/SkillCloud";
+import Timeline from "@/components/Timeline";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function Home() {
@@ -25,6 +26,11 @@ export default function Home() {
           </ErrorBoundary>
         </div>
         
+        {/* Timeline */}
+        <ErrorBoundary>
+          <Timeline />
+        </ErrorBoundary>
+
         {/* About Section */}
         <ErrorBoundary>
           <About />

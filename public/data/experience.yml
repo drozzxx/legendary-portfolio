@@ -1,0 +1,31 @@
+# Experience timeline data
+# Edit this file to update the timeline
+
+- company: Legendary Labs
+  role: Frontend Developer
+  period: 2023 - Present
+  location: Remote
+  highlights:
+    - Built interactive portfolio with Next.js 15 and TypeScript
+    - Implemented animated Skill Cloud and starfield background
+    - Improved performance and accessibility scores
+
+- company: Creative Studio
+  role: UI/UX Designer
+  period: 2021 - 2023
+  location: Istanbul, TR
+  highlights:
+    - Designed component libraries and design systems in Figma
+    - Collaborated with engineers to ship pixel-perfect UIs
+    - Led usability tests and iterated on feedback
+
+- company: Open Source
+  role: Contributor
+  period: 2020 - 2021
+  location: Worldwide
+  highlights:
+    - Contributed to React and Tailwind ecosystem projects
+    - Wrote documentation and examples for newcomers
+    - Mentored junior contributors
+
+
