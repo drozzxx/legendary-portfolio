@@ -90,3 +90,20 @@ body {
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
 }
 
+/* Masonry grid center alignment */
+.my-masonry-grid {
+  display: flex;
+  margin-left: -16px; /* gutter compensation */
+  width: auto;
+  justify-content: center; /* yatayda ortala */
+}
+
+.my-masonry-grid_column {
+  padding-left: 16px; /* gutter size */
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column > article {
+  margin-bottom: 16px;
+}
+

@@ -3,6 +3,7 @@ import About from "@/components/About";
 import ThemeToggle from "@/components/ThemeToggle";
 import SkillCloud from "@/components/SkillCloud";
 import Timeline from "@/components/Timeline";
+import ProjectGallery from "@/components/ProjectGallery";
 import ErrorBoundary from "@/components/ErrorBoundary";
 
 export default function Home() {
@@ -29,6 +30,11 @@ export default function Home() {
         {/* Timeline */}
         <ErrorBoundary>
           <Timeline />
+        </ErrorBoundary>
+
+        {/* Projects */}
+        <ErrorBoundary>
+          <ProjectGallery />
         </ErrorBoundary>
 
         {/* About Section */}

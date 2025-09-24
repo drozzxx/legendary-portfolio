@@ -1,0 +1,27 @@
+# Project gallery data
+
+- title: Legendary Portfolio
+  year: 2025
+  stack: [Next.js, TypeScript, Tailwind, Framer Motion]
+  description: Personal portfolio with animated hero, skill cloud, and starfield background.
+  liveUrl: https://example.com/legendary-portfolio
+  repoUrl: https://github.com/yourname/legendary-portfolio
+  previewGif: /data/previews/legendary-portfolio.gif
+
+- title: 3D Galaxy Explorer
+  year: 2024
+  stack: [Three.js, React, GLSL]
+  description: Interactive galaxy visualization using shaders and WebGL.
+  liveUrl: https://example.com/galaxy
+  repoUrl: https://github.com/yourname/galaxy-explorer
+  previewGif: /data/previews/galaxy.gif
+
+- title: UI Components Kit
+  year: 2023
+  stack: [React, Tailwind, Storybook]
+  description: Reusable, accessible UI components library with docs and stories.
+  liveUrl: https://example.com/ui-kit
+  repoUrl: https://github.com/yourname/ui-kit
+  previewGif: /data/previews/ui-kit.gif
+
+
